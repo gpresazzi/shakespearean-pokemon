@@ -5,4 +5,4 @@ before_install: cd poke_restapi
 install: 
   - pip install -r requirements.txt
   - python setup.py install
-script: python -m pytest --cov src
+script: python -m pytest --cov-report term --cov=src tests/

@@ -1,5 +1,5 @@
 from unittest.mock import Mock
-from poke_restapi.api.pokemon import get_app, get_shakespearean_pokemon
+from poke_restapi.api.pokemon import get_app, get_shakespearean_pokemon_description
 from fastapi.testclient import TestClient
 from poke_restapi.exceptions import PokemonNotFound, GenericAPIError, TooManyRequestError
 
