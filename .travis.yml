@@ -6,3 +6,5 @@ install:
   - pip install -r requirements.txt
   - python setup.py install
 script: python -m pytest --cov-report term --cov=src tests/
+after_success:
+  - codecov # submit coverage
