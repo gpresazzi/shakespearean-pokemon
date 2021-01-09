@@ -1,6 +1,6 @@
 language: python
 python:
   - "3.8"
-before_script: cd poke_restapi
+before_install: cd poke_restapi
 install: pip install -r requirements.txt
 script: python -m pytest
