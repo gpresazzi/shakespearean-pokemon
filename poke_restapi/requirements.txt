@@ -6,4 +6,4 @@ prometheus-fastapi-instrumentator>=5.7.0
 pytest
 pytest-cov
 pytest-mock
-python-coveralls
+coveralls
