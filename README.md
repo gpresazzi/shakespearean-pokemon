@@ -1,7 +1,7 @@
 **Shakespearean Pokemon description API**
 
 [![Build Status](https://travis-ci.com/gpresazzi/shakespearean-pokemon.svg?branch=main)](https://travis-ci.com/gpresazzi/shakespearean-pokemon)
-
+![Coverage Status](https://coveralls.io/repos/github/gpresazzi/shakespearean-pokemon/badge.svg?branch=main)
 
 This is a simple REST API implemented using Python and FastAPI that returns a shakespearean description for a given pokemon.
 
