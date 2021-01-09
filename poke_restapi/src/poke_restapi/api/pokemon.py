@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 app = FastAPI()
 
 @app.get("/pokemon/{pokemon_name}", response_model=Pokemon)
-async def get_pokemon(pokemon_name: str):
+async def get_shakespearean_pokemon_description(pokemon_name: str):
     
     try:
         poke_translator = Translator(pokemon_name)
