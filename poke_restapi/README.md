@@ -1,6 +1,9 @@
 
 *poke_restapi*
 
+[![Build Status](https://travis-ci.com/gpresazzi/shakespearean-pokemon.svg?branch=main)](https://travis-ci.com/gpresazzi/shakespearean-pokemon)
+
+
 This is thhe python module responsible to create the rest API using FastAPI and uvicorn.
 There is only one simple API implemented that returns a shakespearean description given a specific pokemon name.
 
