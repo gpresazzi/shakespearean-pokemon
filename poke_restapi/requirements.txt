@@ -1,11 +1,9 @@
 fastapi>=0.63.0
 uvicorn>=0.13.3
 pokebase==1.3.0
+prometheus-fastapi-instrumentator>=5.7.0
 
 pytest
 pytest-cov
 pytest-mock
-codecov
-
-
-prometheus-fastapi-instrumentator>=5.7.0
+python-coveralls
