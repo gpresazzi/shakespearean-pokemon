@@ -1,5 +1,5 @@
 
-*poke_restapi*
+**poke_restapi**
 
 [![Build Status](https://travis-ci.com/gpresazzi/shakespearean-pokemon.svg?branch=main)](https://travis-ci.com/gpresazzi/shakespearean-pokemon)
 
