@@ -18,17 +18,15 @@ We have 2 options to run the application:
 
 ```bash
 git clone https://github.com/gpresazzi/shakespearean-pokemon.git
-```
-
-```bash
+cd shakespearean-pokemon
 docker build -t shakespearean-server . && docker run -d -p 8000:8000 shakespearean-server
 ```
 
-Test the API
- * `curl http://0.0.0.0:8000/pokemon/charizard `
-
 #### 2 - Run locally
 Refer to the Python module [README](poke_restapi/README.md)
+
+Test the API
+ * `curl http://0.0.0.0:8000/pokemon/charizard`
 
 ---
 
