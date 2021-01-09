@@ -1,11 +1,25 @@
-from fastapi import FastAPI
+import logging
 from poke_restapi.model.pokemon import Pokemon
+from poke_restapi.exceptions import PokemonNotFound, PokemonInternalError, GenericAPIError, TooManyRequestError
+from poke_restapi.controller.translator import Translator
+from fastapi import FastAPI, HTTPException
 
+logger = logging.getLogger(__name__)
 app = FastAPI()
 
-@app.get("/pokemon/", response_model=Pokemon)
+@app.get("/pokemon/{pokemon_name}", response_model=Pokemon)
 async def get_pokemon(pokemon_name: str):
-    ret_poke = Pokemon(name=pokemon_name, description="random poke description")
+    
+    try:
+        poke_translator = Translator(pokemon_name)
+        description = poke_translator.get_shakespearean_description()
+    except PokemonNotFound as ex:
+        raise HTTPException(status_code=404, detail=f"Item #{pokemon_name} not found")
+    except (GenericAPIError, PokemonInternalError, TooManyRequestError) as ex:
+        raise HTTPException(status_code=500, 
+                            detail=f"Internal error while retrieving translation for pokemon: `{pokemon_name}`")
+    
+    ret_poke = Pokemon(name=pokemon_name, description=description)
     return ret_poke
 
 
