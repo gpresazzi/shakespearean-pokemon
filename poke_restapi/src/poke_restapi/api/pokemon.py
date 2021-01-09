@@ -15,7 +15,9 @@ async def get_pokemon(pokemon_name: str):
         description = poke_translator.get_shakespearean_description()
     except PokemonNotFound as ex:
         raise HTTPException(status_code=404, detail=f"Item #{pokemon_name} not found")
-    except (GenericAPIError, PokemonInternalError, TooManyRequestError) as ex:
+    except TooManyRequestError:
+        raise HTTPException(status_code=429, detail=f"Translation APIs request limit exceeded.")
+    except (GenericAPIError, PokemonInternalError):
         raise HTTPException(status_code=500, 
                             detail=f"Internal error while retrieving translation for pokemon: `{pokemon_name}`")
     
