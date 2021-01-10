@@ -23,7 +23,8 @@ docker build -t shakespearean-server . && docker run -d -p 8000:8000 shakespeare
 ```
 
 #### 2 - Run locally
-Detailed development documentation for the module `poke_restapi` is available in the related [README.md](poke_restapi/README.md)
+Detailed development documentation for the module `poke_restapi` is available in the related [README.md](poke_restapi/README.md).
+It contains information on how to execute the application with all the options and the tests.
 
 Test the API
  * `curl http://0.0.0.0:8000/pokemon/charizard`
@@ -44,15 +45,15 @@ Have a look at :
 
 ### Logging 
 
-The application is using the Python default logging library to log the information. 
-by default the application is logging at INFO level and JSON format, but a developer can use command line arguments to add more verbosity and change the format:
+The application is using the python default logging library. 
+By default the application is logging at INFO level and using JSON format, but the developer can use command line arguments to increase the verbosity and change the format:
 ```bash
   --verbose, -v         Increase the log verbosity
   --disable-json-log, -j
                         Flag to determine if we need to disable json format for the logs.
 ```
 
-The loggers have the format:
+The JSON log is in the format:
 ```json
 {
  "asctime": <DATATIME>, 
@@ -65,16 +66,24 @@ The loggers have the format:
 You can see the log stream on the docker container running `docker attach [containerid]`
 
 ### Continuous integration
-[Travis-ci](https://travis-ci.org/) is used to build the application and run the unit tests.
+[TravisCI](https://travis-ci.org/) is used to build the application and run the unit tests.
+- [pytest](https://docs.pytest.org/en/stable/) is uses as framework for the unit tests
+- [pytest-cov](https://pypi.org/project/pytest-cov/) and [coveralls](https://pypi.org/project/coveralls/) used for code coverage and integration with TravisCI
+- [flake8](https://flake8.pycqa.org/en/latest/) for style enforcement
 
 For further detail refer to `.travis.yml`, the TravisCI pipeline is available [here](https://travis-ci.com/github/gpresazzi/shakespearean-pokemon)
 
-### What's next ?
+### Limitations
+The free version of [Shakespeare translator API](https://funtranslations.com/api/shakespeare) is limited with 60 API calls a day with distribution of 5 calls an hour. For that reason the application might return `429` if the user has reached that limit.
+
+### Improvements
 There is a lot of space for improvements on the app. Here some examples:
- - Add some caching on the API using Redis, Memcached or DynamoDB
- - Using JSON format we could send them to ELK (Elasticsearch, Logstash, and Kibana)  
- - Add some integrations tests in the CI.
- 
+ - [CACHING] Add some caching on the top of the API using Redis, Memcached or DynamoDB
+ - [LOGS] Using JSON format for logs to send them to ELK (Elasticsearch, Logstash, and Kibana)  
+ - [SCALABILITY] Use Kubernets to scale, manage deployments and manage the cluster 
+ - [CI] Add some integrations tests in the CI.
+ - .. and many more
+
 
 *Third party APIs:*
 - PokeAPI: https://pokeapi.co/docs/v2
