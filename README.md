@@ -23,7 +23,7 @@ docker build -t shakespearean-server . && docker run -d -p 8000:8000 shakespeare
 ```
 
 #### 2 - Run locally
-Refer to the Python module [README](poke_restapi/README.md)
+Detailed development documentation for the module `poke_restapi` is available in the related [README.md](poke_restapi/README.md)
 
 Test the API
  * `curl http://0.0.0.0:8000/pokemon/charizard`
