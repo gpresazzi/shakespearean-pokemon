@@ -22,27 +22,27 @@ def setup_logging(log_level: int, disable_json: bool) -> None:
         logger = logging.getLogger()
         logger.setLevel(log_level)
         json_handler = logging.StreamHandler()
-        formatter = jsonlogger.JsonFormatter(fmt=log_format )
+        formatter = jsonlogger.JsonFormatter(fmt=log_format)
         json_handler.setFormatter(formatter)
         logger.addHandler(json_handler)
-    
+
     logger.info("Initializing pokemon server using verbosity level: %s", log_level)
 
 
 def init():
     """
     Initialize application arguments and logs and return parsed input args
-    :return: 
+    :return: parsed arguments
     """
     parser = argparse.ArgumentParser()
     parser.add_argument('--verbose', '-v', action='count', default=0, help='Increase the log verbosity')
     parser.add_argument('--disable-json-log', '-j', dest='disable_json', action='store_true', default=False,
                         help='Flag to determine if we need to disable json format for the logs.')
-    parser.add_argument('--port', '-p', dest='port', default=8000, type=int, required=False, 
+    parser.add_argument('--port', '-p', dest='port', default=8000, type=int, required=False,
                         help='Application server listening port')
 
     args_namespace = parser.parse_args(sys.argv[1:])
-    
+
     # setup loggers, default as INFO level
     log_level = logging.DEBUG if args_namespace.verbose else logging.INFO
     setup_logging(log_level, args_namespace.disable_json)

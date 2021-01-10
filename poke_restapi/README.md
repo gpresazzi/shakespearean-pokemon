@@ -52,5 +52,11 @@ optional arguments:
 By default the tests will run the coverage
 
 ```bash
-python -m pytest
+python -m pytest 
+```
+
+Supported arguments
+```
+ --cov poke_restapi --cov-report term-missing # for the coverage
+ --flake8  # to enable flake 8 checks 
 ```

@@ -6,6 +6,6 @@ install:
   - pip install -r requirements.txt
   - python setup.py install
 script: 
-  - python -m pytest --cov poke_restapi --cov-report term-missing
+  - python -m pytest --cov poke_restapi --cov-report term-missing --flake8
 after_success:
   - coveralls
