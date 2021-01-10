@@ -13,6 +13,7 @@ async def get_shakespearean_pokemon_description(pokemon_name: str):
     try:
         poke_translator = Translator(pokemon_name)
         description = poke_translator.get_shakespearean_description()
+        logger.info("Request for pokemon: %s succeeded.", pokemon_name)
     except PokemonNotFound as ex:
         raise HTTPException(status_code=404, detail=f"Item #{pokemon_name} not found")
     except TooManyRequestError:
@@ -25,5 +26,5 @@ async def get_shakespearean_pokemon_description(pokemon_name: str):
     return ret_poke
 
 
-def get_app():
+def get_app() -> FastAPI:
     return app

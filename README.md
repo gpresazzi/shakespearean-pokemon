@@ -45,7 +45,24 @@ Have a look at :
 ### Logging 
 
 The application is using the Python default logging library to log the information. 
-Only basic configurations have been applied to the logs in this example, it's possible to format them in JSON and store them in a centralized service for further analysis.  
+by default the application is logging at INFO level and JSON format, but a developer can use command line arguments to add more verbosity and change the format:
+```bash
+  --verbose, -v         Increase the log verbosity
+  --disable-json-log, -j
+                        Flag to determine if we need to disable json format for the logs.
+```
+
+The loggers have the format:
+```json
+{
+ "asctime": <DATATIME>, 
+ "name": <module_name>, 
+ "levelname": <LOG_LEVEL>, 
+ "message": <MESSAGE>
+}
+```
+
+You can see the log stream on the docker container running `docker attach [containerid]`
 
 ### Continuous integration
 [Travis-ci](https://travis-ci.org/) is used to build the application and run the unit tests.
@@ -53,10 +70,11 @@ Only basic configurations have been applied to the logs in this example, it's po
 For further detail refer to `.travis.yml`, the TravisCI pipeline is available [here](https://travis-ci.com/github/gpresazzi/shakespearean-pokemon)
 
 ### What's next ?
- - Add some integrations tests using TravisCI
- - Add some caching on the API using Redis or DynamoDB
- - Configure the logs using JSON format and send them to ELK (Elasticsearch, Logstash, and Kibana)  
-
+There is a lot of space for improvements on the app. Here some examples:
+ - Add some caching on the API using Redis, Memcached or DynamoDB
+ - Using JSON format we could send them to ELK (Elasticsearch, Logstash, and Kibana)  
+ - Add some integrations tests in the CI.
+ 
 
 *Third party APIs:*
 - PokeAPI: https://pokeapi.co/docs/v2
