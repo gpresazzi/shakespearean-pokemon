@@ -11,8 +11,9 @@ This is a simple REST API implemented using Python and FastAPI that returns a sh
 
 ### Instructions
 We have 2 options to run the application:
- * using [Docker](https://www.docker.com/) - intended more for production environments
- * locally using python [setuptools](https://pypi.org/project/setuptools/) - intended for development
+ * Using [Docker](https://www.docker.com/) - intended more for production environments
+ * Locally using python [setuptools](https://pypi.org/project/setuptools/) - intended for development
+ * Using [Kubernetes](https://kubernetes.io/) - to have more replicas of the server
 
 #### 1 - Run using docker
 
@@ -25,6 +26,18 @@ docker build -t shakespearean-server . && docker run -d -p 8000:8000 shakespeare
 #### 2 - Run locally
 Detailed development documentation for the module `poke_restapi` is available in the related [README.md](poke_restapi/README.md).
 It contains information on how to execute the application with all the options and the tests.
+
+
+#### 2 - Run using Kubernetes
+```bash
+git clone https://github.com/gpresazzi/shakespearean-pokemon.git
+cd shakespearean-pokemon
+docker build -t shakespearean-server .
+kubectl apply -f deployment.yaml
+```
+
+Test the API
+ * `curl http://0.0.0.0:8000/pokemon/charizard`
 
 Test the API
  * `curl http://0.0.0.0:8000/pokemon/charizard`
