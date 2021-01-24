@@ -55,6 +55,13 @@ Have a look at :
 
 * http://0.0.0.0:8000/metrics
 
+The docker-compose.yml file also provide a simple setup with Prometheus + Grafana
+
+To test it, just run
+```bash
+docker-compose up -d
+```
+
 
 ### Logging 
 
